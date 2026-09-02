@@ -71,4 +71,13 @@ public class GlobalExceptionHandler extends RuntimeException {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(res);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex){
+        log.error("Erro interno ao processar requisição: {}", ex.getMessage(), ex);
+        Map<String, String> res = new HashMap<>();
+        res.put("erro", "Erro interno do servidor");
+        res.put("mensagem", ex.getMessage() != null ? ex.getMessage() : "Erro ao guardar dados.");
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(res);
+    }
 }

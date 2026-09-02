@@ -38,10 +38,12 @@ public class JwtAuthenticationFilter  extends OncePerRequestFilter {
         }
 
 
-        //E
         // Extrair o token (ignorar os primeiros 7 caracteres: "Bearer ")
-        String token = authHeader.substring(7);
-        if (token.isEmpty() || token.equals("undefined")) {
+        String token = authHeader.substring(7).trim();
+        if (token.startsWith("\"") && token.endsWith("\"") && token.length() > 1) {
+            token = token.substring(1, token.length() - 1).trim();
+        }
+        if (token.isEmpty() || token.equals("undefined") || token.equals("null")) {
             filterChain.doFilter(request, response);
             return;
         }
