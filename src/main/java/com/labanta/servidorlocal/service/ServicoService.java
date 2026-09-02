@@ -30,8 +30,8 @@ public class ServicoService {
     }
 
     public Servico saveServico(String titulo, String descricao, double preco){
-        Servico servico = new Servico(titulo, descricao, preco, true, null, null);
-       return repository.save(servico);
+        Servico servico = new Servico(titulo, descricao, preco, true, preco, null);
+        return repository.save(servico);
     }
 
     public Servico saveServico(Servico servico){

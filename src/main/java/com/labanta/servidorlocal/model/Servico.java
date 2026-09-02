@@ -27,9 +27,8 @@ public class Servico {
         this.descricao = descricao;
         this.preco = preco;
         this.estado = estado;
-        this.precoComDesconto = precoComDesconto;
+        this.precoComDesconto = precoComDesconto != null ? precoComDesconto : preco;
         this.imageCapa = imageCapa;
-
     }
 
     public Long getId() {
