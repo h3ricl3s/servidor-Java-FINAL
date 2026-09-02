@@ -51,8 +51,8 @@ public class AuthService {
             throw new UtilizadorExistenteException("Utilizador com username " + username + " já existe! Não pode ter utilizadores com mesmo username!");
         }
 
-        emailService.enviarEmailBoasVindas(utilizador.getEmail(),utilizador.getUsername());
         saveUtilizador(utilizador);
+        emailService.enviarEmailBoasVindas(utilizador.getEmail(),utilizador.getUsername());
         return utilizador;
 
 
