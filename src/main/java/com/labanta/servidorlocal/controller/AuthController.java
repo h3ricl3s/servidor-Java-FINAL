@@ -37,7 +37,7 @@ public class AuthController {
     @PostMapping("/alerta-login")
     public String alertaLogin(@RequestParam String email , @RequestParam String ip){
         GeoLocationResponseDTO res = geoService.localizarIp(ip);
-        emailService.enviarAlertaSeguranca(email, res.getCity(), res.getCountry_name());
+        //emailService.enviarAlertaSeguranca(email, res.getCity(), res.getCountry_name());
         return "ALERTA SEGURANCA";
     }
 
