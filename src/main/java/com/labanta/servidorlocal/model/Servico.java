@@ -15,14 +15,14 @@ public class Servico {
     private String descricao;
     private double preco;
     private boolean estado;
-    private double precoComDesconto;
+    private Double precoComDesconto;
     private String imageCapa;
 
 
     public Servico() {
     }
 
-    public Servico(String titulo, String descricao, double preco, boolean estado, double precoComDesconto, String imageCapa) {
+    public Servico(String titulo, String descricao, double preco, boolean estado, Double precoComDesconto, String imageCapa) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.preco = preco;

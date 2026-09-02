@@ -1,5 +1,6 @@
 package com.labanta.servidorlocal.controller;
 
+import com.labanta.servidorlocal.dto.ServicoRequestDTO;
 import com.labanta.servidorlocal.dto.ServicoResponseDTO;
 import com.labanta.servidorlocal.model.Servico;
 import com.labanta.servidorlocal.service.EmailService;
@@ -68,8 +69,8 @@ public class ServicoController {
     )
     @SecurityRequirement(name = "BearerAuth")
     @PostMapping("/servicos")
-    public Servico criarServico(@RequestBody Servico servico){
-        return servicoService.saveServico(servico);
+    public Servico criarServico(@RequestBody ServicoRequestDTO servico){
+        return servicoService.saveServico(servico.getTitulo(), servico.getDescricao(), servico.getPreco());
     }
 
     @GetMapping("/{id}")
@@ -127,6 +128,7 @@ public class ServicoController {
      String fileUploaded =fileStorageService.storeImage(file);
 
      servico.setImageCapa(fileUploaded);
+
      servicoService.saveServico(servico);
 
 

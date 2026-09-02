@@ -1,5 +1,6 @@
 package com.labanta.servidorlocal.service;
 
+import com.labanta.servidorlocal.dto.ServicoRequestDTO;
 import com.labanta.servidorlocal.exception.PercentagemDescontoException;
 import com.labanta.servidorlocal.exception.ServicoNaoEncontradoException;
 import com.labanta.servidorlocal.model.Servico;
@@ -28,8 +29,13 @@ public class ServicoService {
         return repository;
     }
 
-    public Servico saveServico(Servico servico){
+    public Servico saveServico(String titulo, String descricao, double preco){
+        Servico servico = new Servico(titulo, descricao, preco, true, null, null);
        return repository.save(servico);
+    }
+
+    public Servico saveServico(Servico servico){
+        return repository.save(servico);
     }
 
     public Page<Servico> servicoFindAll(Pageable pageable){
